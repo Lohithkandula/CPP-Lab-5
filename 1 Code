@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+void create_list();
+void delete_at_position();
+void display();
+struct node
+{
+int data;
+struct node *next;
+};
+struct node *head,*new_node,*temp,*prev_node,*next_node;
+main()
+{
+create_list();
+delete_at_position();
+display();
+}
+void create_list()
+{
+int choice = 1;
+head = 0;
+while(choice == 1)
+{
+new_node = (struct node *)malloc(sizeof(struct node));
+cout<<"Enter the data : ";
+cin>>new_node->data;
+new_node -> next = 0;
+if(head == 0)
+{
+head = temp = new_node;
+}
+else{
+temp -> next = new_node;
+temp = new_node;
+}
+cout<<"Do you want to continue ? if yes : Enter 1 no : Enter 0\n";
+cin>>choice;
+}
+}
+void delete_at_position()
+{
+int pos,i=1;
+cout<<"Enter the position of the node to delete : ";
+cin>>pos;
+temp = head;
+while(i<pos- 1)
+{
+temp = temp -> next;
+i++;
+}
+next_node = temp -> next;
+temp -> next = next_node -> next;
+free(next_node);
+cout<<"Node at given position is deleted \n";
+}
+void display()
+{
+temp = head;
+cout<<"The values entered are : ";
+while(temp!= 0)
+{
+cout<<temp->data;
+temp = temp->next;
+}
+}
